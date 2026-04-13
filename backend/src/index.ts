@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 
-const predictRouter = require('./predict').default;
-const analyticsRouter = require('./analytics').default;
+import predictRouter from './predict';
+import analyticsRouter from './analytics';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3001;
