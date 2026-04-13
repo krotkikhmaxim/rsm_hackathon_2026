@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model EnterpriseProfile {
+  id              Int      @id @default(autoincrement())
+  enterprise_code String   @unique
+  type            String   
+  host_count      Int
+  region          String
+  predictions     PredictionLog[]
+}
+
+model Threat {
+  id           Int      @id @default(autoincrement())
+  code         String   @unique 
+  name         String
+  description  String?
+  object       String?  
+  source       String? 
+  cia_flags    String?  
+  recommendations Recommendation[]
+}
+
+model PredictionLog {
+  id                String   @id @default(uuid())
+  request_id        String   @unique
+  enterprise_code   String
+  enterprise        EnterpriseProfile @relation(fields: [enterprise_code], references: [enterprise_code])
+  probability       Float    
+  predicted_threat  String   
+  predicted_object  String   
+  season            String   
+  day_of_week       Int      
+  hour              Int      
+  createdAt         DateTime @default(now())
+}
+
+model Recommendation {
+  id          Int    @id @default(autoincrement())
+  rec_code    String @unique
+  title       String
+  description String
+  priority    Int
+  threatId    Int
+  threat      Threat @relation(fields: [threatId], references: [id])
+}

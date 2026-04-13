@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: hackathon_db
+    environment:
+      POSTGRES_USER: sunmoon
+      POSTGRES_PASSWORD: gdjskDF73672_)
+      POSTGRES_DB: cyber_db
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
