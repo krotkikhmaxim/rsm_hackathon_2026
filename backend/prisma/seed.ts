@@ -17,7 +17,7 @@ async function main() {
 
   const parser = fs.createReadStream(csvFilePath).pipe(
     csv({
-      separator: ';',
+      separator: ',',
       mapHeaders: ({ header }) => header.trim()
     })
   );
@@ -33,7 +33,7 @@ async function main() {
         enterprise_code: code,
         type: row['Тип предприятия'] || 'Неизвестно',
         host_count: hostCount,
-        region: row['Регион'] || 'Не указан'
+        region: row['Регион размещения предприятия'] || 'Не указан'
       });
     }
   }
