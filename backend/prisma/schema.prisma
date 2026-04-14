@@ -24,6 +24,7 @@ model Threat {
   object       String?  
   source       String? 
   cia_flags    String?  
+  cluster      String?
   recommendations Recommendation[]
 }
 
@@ -33,12 +34,20 @@ model PredictionLog {
   enterprise_code   String
   enterprise        EnterpriseProfile @relation(fields: [enterprise_code], references: [enterprise_code])
   probability       Float    
-  predicted_threat  String   
-  predicted_object  String   
+  predicted_threat  String  
+  predicted_cluster String 
+  predicted_object  String?
   season            String   
-  day_of_week       Int      
-  hour              Int      
+  day_of_week       Int     
+  hour              Int   
+  minute            Int
   createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  targetDate        DateTime?
+  error_cluster     String?
+  error_object      String?
+  horizon           String? @default("7 дней")
+  Float             Float?
 }
 
 model Recommendation {
