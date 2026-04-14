@@ -47,7 +47,7 @@ model PredictionLog {
   error_cluster     String?
   error_object      String?
   horizon           String? @default("7 дней")
-  Float             Float?
+  estimated_damage  Float?
 }
 
 model Recommendation {
