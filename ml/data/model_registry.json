@@ -1,0 +1,342 @@
+{
+  "24h": [
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "1",
+      "target": "target_next_24h",
+      "model_file": "model_infra1_threat1.cbm",
+      "model_path": "models/24h/model_infra1_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "2",
+      "target": "target_next_24h",
+      "model_file": "model_infra1_threat2.cbm",
+      "model_path": "models/24h/model_infra1_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "3",
+      "target": "target_next_24h",
+      "model_file": "model_infra1_threat3.cbm",
+      "model_path": "models/24h/model_infra1_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "4",
+      "target": "target_next_24h",
+      "model_file": "model_infra1_threat4.cbm",
+      "model_path": "models/24h/model_infra1_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "5",
+      "target": "target_next_24h",
+      "model_file": "model_infra1_threat5.cbm",
+      "model_path": "models/24h/model_infra1_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "6",
+      "target": "target_next_24h",
+      "model_file": "model_infra1_threat6.cbm",
+      "model_path": "models/24h/model_infra1_threat6.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "1",
+      "target": "target_next_24h",
+      "model_file": "model_infra2_threat1.cbm",
+      "model_path": "models/24h/model_infra2_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "2",
+      "target": "target_next_24h",
+      "model_file": "model_infra2_threat2.cbm",
+      "model_path": "models/24h/model_infra2_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "3",
+      "target": "target_next_24h",
+      "model_file": "model_infra2_threat3.cbm",
+      "model_path": "models/24h/model_infra2_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "4",
+      "target": "target_next_24h",
+      "model_file": "model_infra2_threat4.cbm",
+      "model_path": "models/24h/model_infra2_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "5",
+      "target": "target_next_24h",
+      "model_file": "model_infra2_threat5.cbm",
+      "model_path": "models/24h/model_infra2_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "6",
+      "target": "target_next_24h",
+      "model_file": "model_infra2_threat6.cbm",
+      "model_path": "models/24h/model_infra2_threat6.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "1",
+      "target": "target_next_24h",
+      "model_file": "model_infra3_threat1.cbm",
+      "model_path": "models/24h/model_infra3_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "2",
+      "target": "target_next_24h",
+      "model_file": "model_infra3_threat2.cbm",
+      "model_path": "models/24h/model_infra3_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "3",
+      "target": "target_next_24h",
+      "model_file": "model_infra3_threat3.cbm",
+      "model_path": "models/24h/model_infra3_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "4",
+      "target": "target_next_24h",
+      "model_file": "model_infra3_threat4.cbm",
+      "model_path": "models/24h/model_infra3_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "5",
+      "target": "target_next_24h",
+      "model_file": "model_infra3_threat5.cbm",
+      "model_path": "models/24h/model_infra3_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "6",
+      "target": "target_next_24h",
+      "model_file": "model_infra3_threat6.cbm",
+      "model_path": "models/24h/model_infra3_threat6.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "1",
+      "target": "target_next_24h",
+      "model_file": "model_infra4_threat1.cbm",
+      "model_path": "models/24h/model_infra4_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "2",
+      "target": "target_next_24h",
+      "model_file": "model_infra4_threat2.cbm",
+      "model_path": "models/24h/model_infra4_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "3",
+      "target": "target_next_24h",
+      "model_file": "model_infra4_threat3.cbm",
+      "model_path": "models/24h/model_infra4_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "4",
+      "target": "target_next_24h",
+      "model_file": "model_infra4_threat4.cbm",
+      "model_path": "models/24h/model_infra4_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "5",
+      "target": "target_next_24h",
+      "model_file": "model_infra4_threat5.cbm",
+      "model_path": "models/24h/model_infra4_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "6",
+      "target": "target_next_24h",
+      "model_file": "model_infra4_threat6.cbm",
+      "model_path": "models/24h/model_infra4_threat6.cbm"
+    }
+  ],
+  "7d": [
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "1",
+      "target": "target_next_7d",
+      "model_file": "model_infra1_threat1.cbm",
+      "model_path": "models/7d/model_infra1_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "2",
+      "target": "target_next_7d",
+      "model_file": "model_infra1_threat2.cbm",
+      "model_path": "models/7d/model_infra1_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "3",
+      "target": "target_next_7d",
+      "model_file": "model_infra1_threat3.cbm",
+      "model_path": "models/7d/model_infra1_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "4",
+      "target": "target_next_7d",
+      "model_file": "model_infra1_threat4.cbm",
+      "model_path": "models/7d/model_infra1_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "5",
+      "target": "target_next_7d",
+      "model_file": "model_infra1_threat5.cbm",
+      "model_path": "models/7d/model_infra1_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "1",
+      "threat_cluster": "6",
+      "target": "target_next_7d",
+      "model_file": "model_infra1_threat6.cbm",
+      "model_path": "models/7d/model_infra1_threat6.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "1",
+      "target": "target_next_7d",
+      "model_file": "model_infra2_threat1.cbm",
+      "model_path": "models/7d/model_infra2_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "2",
+      "target": "target_next_7d",
+      "model_file": "model_infra2_threat2.cbm",
+      "model_path": "models/7d/model_infra2_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "3",
+      "target": "target_next_7d",
+      "model_file": "model_infra2_threat3.cbm",
+      "model_path": "models/7d/model_infra2_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "4",
+      "target": "target_next_7d",
+      "model_file": "model_infra2_threat4.cbm",
+      "model_path": "models/7d/model_infra2_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "5",
+      "target": "target_next_7d",
+      "model_file": "model_infra2_threat5.cbm",
+      "model_path": "models/7d/model_infra2_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "2",
+      "threat_cluster": "6",
+      "target": "target_next_7d",
+      "model_file": "model_infra2_threat6.cbm",
+      "model_path": "models/7d/model_infra2_threat6.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "1",
+      "target": "target_next_7d",
+      "model_file": "model_infra3_threat1.cbm",
+      "model_path": "models/7d/model_infra3_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "2",
+      "target": "target_next_7d",
+      "model_file": "model_infra3_threat2.cbm",
+      "model_path": "models/7d/model_infra3_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "3",
+      "target": "target_next_7d",
+      "model_file": "model_infra3_threat3.cbm",
+      "model_path": "models/7d/model_infra3_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "4",
+      "target": "target_next_7d",
+      "model_file": "model_infra3_threat4.cbm",
+      "model_path": "models/7d/model_infra3_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "5",
+      "target": "target_next_7d",
+      "model_file": "model_infra3_threat5.cbm",
+      "model_path": "models/7d/model_infra3_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "3",
+      "threat_cluster": "6",
+      "target": "target_next_7d",
+      "model_file": "model_infra3_threat6.cbm",
+      "model_path": "models/7d/model_infra3_threat6.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "1",
+      "target": "target_next_7d",
+      "model_file": "model_infra4_threat1.cbm",
+      "model_path": "models/7d/model_infra4_threat1.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "2",
+      "target": "target_next_7d",
+      "model_file": "model_infra4_threat2.cbm",
+      "model_path": "models/7d/model_infra4_threat2.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "3",
+      "target": "target_next_7d",
+      "model_file": "model_infra4_threat3.cbm",
+      "model_path": "models/7d/model_infra4_threat3.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "4",
+      "target": "target_next_7d",
+      "model_file": "model_infra4_threat4.cbm",
+      "model_path": "models/7d/model_infra4_threat4.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "5",
+      "target": "target_next_7d",
+      "model_file": "model_infra4_threat5.cbm",
+      "model_path": "models/7d/model_infra4_threat5.cbm"
+    },
+    {
+      "infrastructure_cluster": "4",
+      "threat_cluster": "6",
+      "target": "target_next_7d",
+      "model_file": "model_infra4_threat6.cbm",
+      "model_path": "models/7d/model_infra4_threat6.cbm"
+    }
+  ]
+}
