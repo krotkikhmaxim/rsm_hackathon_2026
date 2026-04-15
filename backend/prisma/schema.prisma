@@ -10,7 +10,7 @@ datasource db {
 model EnterpriseProfile {
   id              Int      @id @default(autoincrement())
   enterprise_code String   @unique
-  type            String   
+  type            String
   host_count      Int
   region          String
   predictions     PredictionLog[]
@@ -18,12 +18,12 @@ model EnterpriseProfile {
 
 model Threat {
   id           Int      @id @default(autoincrement())
-  code         String   @unique 
+  code         String   @unique
   name         String
   description  String?
-  object       String?  
-  source       String? 
-  cia_flags    String?  
+  object       String?
+  source       String?
+  cia_flags    String?
   cluster      String?
   recommendations Recommendation[]
 }
@@ -33,20 +33,18 @@ model PredictionLog {
   request_id        String   @unique
   enterprise_code   String
   enterprise        EnterpriseProfile @relation(fields: [enterprise_code], references: [enterprise_code])
-  probability       Float    
-  predicted_threat  String  
-  predicted_cluster String 
+  probability       Float
+  predicted_threat  String
+  predicted_cluster String?
   predicted_object  String?
-  season            String   
-  day_of_week       Int     
-  hour              Int   
-  minute            Int
+  season            String?
+  day_of_week       Int?
+  hour              Int?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   targetDate        DateTime?
-  error_cluster     String?
-  error_object      String?
-  horizon           String? @default("7 дней")
+  horizon           String? @default("7d")
+  report_md         String?
   estimated_damage  Float?
 }
 

@@ -11,6 +11,50 @@ services:
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sunmoon -d cyber_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ml:
+    build: ./ml
+    container_name: hackathon_ml
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 60s
+
+  backend:
+    build: ./backend
+    container_name: hackathon_backend
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://sunmoon:gdjskDF73672_)@postgres:5432/cyber_db
+      ML_SERVICE_URL: http://ml:8000
+      PORT: "3001"
+      FRONTEND_URL: http://localhost:3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ml:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: hackathon_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
 
 volumes:
   postgres_data:
