@@ -14,7 +14,7 @@ const MOCK_HISTORY: PredictionLogItem[] = [
   { request_id: 'req-004', enterprise_code: 'DEMO-01', predicted_threat: 'Brute Force / Подбор паролей', probability: 0.45, horizon: '24h', prediction_date: '2026-04-12', createdAt: '2026-04-12T16:45:00Z' },
 ];
 
-export default function VulnerabilityPage() {
+export default function HistoryPage() {
   const [predictions, setPredictions] = useState<PredictionLogItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

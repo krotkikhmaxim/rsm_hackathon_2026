@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { to: '/dashboard', label: 'Дашборд' },
   { to: '/threats', label: 'Каталог угроз' },
   { to: '/recommendations', label: 'Рекомендации' },
-  { to: '/vulnerability', label: 'Уязвимости' },
+  { to: '/history', label: 'История' },
 ];
 
 export default function Layout({ children }: { children: ReactNode }) {

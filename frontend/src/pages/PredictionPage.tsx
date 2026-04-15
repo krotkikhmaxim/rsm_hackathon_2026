@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { runPrediction } from '../services/predictApi';
@@ -9,6 +10,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 
 export default function PredictionPage() {
+  const [searchParams] = useSearchParams();
   const [enterprises, setEnterprises] = useState<EnterpriseItem[]>([]);
   const [enterpriseCode, setEnterpriseCode] = useState('');
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
@@ -21,10 +23,12 @@ export default function PredictionPage() {
     fetchEnterprises()
       .then(list => {
         setEnterprises(list);
-        if (list.length > 0) setEnterpriseCode(list[0].enterprise_code);
+        const fromUrl = searchParams.get('enterprise');
+        const match = fromUrl && list.find(e => e.enterprise_code === fromUrl);
+        setEnterpriseCode(match ? match.enterprise_code : list[0]?.enterprise_code || '');
       })
       .catch(() => setEnterprises([]));
-  }, []);
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

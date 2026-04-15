@@ -4,7 +4,7 @@ import PredictionPage from './pages/PredictionPage';
 import DashboardPage from './pages/DashboardPage';
 import ThreatCatalogPage from './pages/ThreatCatalogPage';
 import RecommendationsPage from './pages/RecommendationsPage';
-import VulnerabilityPage from './pages/VulnerabilityPage';
+import HistoryPage from './pages/HistoryPage';
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/threats" element={<ThreatCatalogPage />} />
         <Route path="/recommendations" element={<RecommendationsPage />} />
-        <Route path="/vulnerability" element={<VulnerabilityPage />} />
+        <Route path="/history" element={<HistoryPage />} />
       </Routes>
     </Layout>
   );

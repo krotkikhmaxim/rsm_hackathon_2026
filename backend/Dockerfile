@@ -1,10 +1,12 @@
 FROM node:20-slim
 
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Зависимости
+# Зависимости (включая devDeps — нужны @types/* и ts-node-dev)
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+RUN npm ci
 
 # Prisma
 COPY prisma/ prisma/
@@ -19,5 +21,4 @@ COPY data/ data/
 
 EXPOSE 3001
 
-# Запуск через ts-node-dev (для хакатона; для прода — собрать в JS)
-CMD ["npx", "ts-node-dev", "--respawn", "src/index.ts"]
+CMD ["sh", "-c", "npx prisma migrate reset --force && npx ts-node-dev --respawn --transpile-only src/index.ts"]
