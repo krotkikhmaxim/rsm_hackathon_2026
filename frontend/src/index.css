@@ -1,7 +1,7 @@
 :root {
   --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
+  --text-h: #6233d8;
+  --bg: #bb8484;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -32,8 +32,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
+    --text: #7e8fac;
+    --text-h: #3e60a3;
     --bg: #16171d;
     --border: #2e303a;
     --code-bg: #1f2028;
@@ -108,4 +108,15 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+
+.top-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 20px;
 }

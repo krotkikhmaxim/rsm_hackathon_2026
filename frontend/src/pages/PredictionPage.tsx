@@ -1,54 +1,79 @@
 import { useState } from "react";
 
+type PredictionResult = {
+  threat: string;
+  probability: number;
+};
+
+
 export const PredictionPage = () => {
 
-  const [file, setFile] = useState<File | null>(null);
+  const [days, setDays] = useState(7);
 
-  const handleFileChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
+  const [result, setResult] =
+    useState<PredictionResult | null>(null);
 
   const handlePredict = () => {
 
-    if (!file) {
-      alert("Выберите файл");
-      return;
-    }
+    const probability =
+      Math.min(0.4 + days * 0.01, 0.9);
 
-    console.log("Файл:", file.name);
+    const mockResult: PredictionResult = {
+      threat: "Malware",
+      probability
+    };
 
-    // позже здесь будет fetch к backend
+    setResult(mockResult);
   };
 
   return (
-    <div className="container">
 
-      <h1>Prediction</h1>
+    <div className="page">
 
-      <div className="card">
+      <h1>Прогноз угроз</h1>
 
-        <h2>Upload CSV</h2>
+      <div className="slider-block">
+
+        <label>
+          Диапазон прогноза:
+          <b> {days} дней</b>
+        </label>
 
         <input
-          type="file"
-          accept=".csv"
-          onChange={handleFileChange}
+          type="range"
+          min="1"
+          max="30"
+          value={days}
+
+          onChange={(e) =>
+            setDays(Number(e.target.value))
+          }
         />
 
-        <br /><br />
-
-        <button
-          className="button"
-          onClick={handlePredict}
-        >
-          Run prediction
-        </button>
-
       </div>
+
+      <button
+        className="predict-button"
+        onClick={handlePredict}
+      >
+        Сделать прогноз
+      </button>
+
+      {result && (
+
+        <div className="result-card">
+
+          <h2>Главная угроза</h2>
+
+          <p>{result.threat}</p>
+
+          <p>
+            {(result.probability * 100).toFixed(1)}%
+          </p>
+
+        </div>
+
+      )}
 
     </div>
   );
