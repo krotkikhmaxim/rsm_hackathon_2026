@@ -1,16 +1,64 @@
 services:
   postgres:
     image: postgres:15
-    container_name: hackathon_db
     environment:
-      POSTGRES_USER: sunmoon
-      POSTGRES_PASSWORD: gdjskDF73672_)
-      POSTGRES_DB: cyber_db
-    ports:
-      - "5432:5432"
-    restart: unless-stopped
+      POSTGRES_USER: ${POSTGRES_USER:-sunmoon}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-cyber_db}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sunmoon} -d ${POSTGRES_DB:-cyber_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  ml:
+    build: ./ml
+    expose:
+      - "8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 60s
+
+  backend:
+    build: ./backend
+    expose:
+      - "3001"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sunmoon}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-cyber_db}
+      ML_SERVICE_URL: http://ml:8000
+      PORT: "3001"
+      FRONTEND_URL: ${FRONTEND_URL:-https://rsm-hackathon-2026.pvutrix.com}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ml:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3001/api/v1/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  frontend:
+    build: ./frontend
+    expose:
+      - "80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
 volumes:
   postgres_data:

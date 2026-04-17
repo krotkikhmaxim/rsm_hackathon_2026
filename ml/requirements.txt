@@ -1,7 +1,9 @@
 fastapi
 uvicorn
 pandas
-joblib
-shap
+numpy
+scipy
 catboost
+shap
 pydantic
+joblib
