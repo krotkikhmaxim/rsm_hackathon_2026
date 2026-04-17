@@ -49,10 +49,12 @@ router.post('/', async (req: Request, res: Response): Promise<any> => {
         enterprise_code: profile.enterprise_code,
         probability: prediction.probability,
         predicted_threat: prediction.threat_code,
+        predicted_cluster: prediction.cluster ?? null,
         predicted_object: prediction.target_object,
         season: getSeason(mlPayload.month),
         day_of_week: mlPayload.day_of_week,
         hour: mlPayload.hour,
+        minute: new Date().getMinutes(),
       },
     });
 

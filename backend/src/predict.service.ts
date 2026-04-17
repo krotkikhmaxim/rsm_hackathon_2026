@@ -34,10 +34,12 @@ export class PredictService {
                 enterprise_code: requestData.enterprise_code,
                 probability: mlResponse.probability,
                 predicted_threat: mlResponse.top_threat_code,
+                predicted_cluster: mlResponse.cluster ?? null,
                 predicted_object: requestData.object ?? 'unknown',
                 season: requestData.season ?? 'unknown',
                 day_of_week: requestData.day_of_week ?? 0,
-                hour: requestData.hour ?? 0
+                hour: requestData.hour ?? 0,
+                minute: requestData.minute ?? null
             }
         }).catch((e: unknown) =>
             console.error('Ошибка сохранения лога:', e instanceof Error ? e.message : String(e))
