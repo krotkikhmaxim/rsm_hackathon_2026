@@ -3,8 +3,10 @@ services:
     image: postgres:15
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-sunmoon}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-gdjskDF7322314081HDJS}
       POSTGRES_DB: ${POSTGRES_DB:-cyber_db}
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -28,10 +30,10 @@ services:
 
   backend:
     build: ./backend
-    expose:
-      - "3001"
+    ports:
+      - "3001:3001"
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-sunmoon}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-cyber_db}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sunmoon}:${POSTGRES_PASSWORD:-gdjskDF7322314081HDJS}@postgres:5432/${POSTGRES_DB:-cyber_db}
       ML_SERVICE_URL: http://ml:8000
       PORT: "3001"
       FRONTEND_URL: ${FRONTEND_URL:-https://rsm-hackathon-2026.pvutrix.com}
@@ -50,8 +52,8 @@ services:
 
   frontend:
     build: ./frontend
-    expose:
-      - "80"
+    ports:
+      - "3000:80"
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost/ || exit 1"]

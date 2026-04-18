@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import axios from 'axios';
 import crypto from 'crypto';
+import process from 'process';
 import type { PredictRequest, MLServiceResponse } from './types';
 
 const router = Router();
@@ -43,7 +44,7 @@ router.post('/', async (req: Request, res: Response): Promise<any> => {
     const requestId = crypto.randomUUID();
 
     // Сохранение в лог
-    await prisma.predictionLog.create({
+    const predictionLog = await prisma.predictionLog.create({
       data: {
         request_id: requestId,
         enterprise_code: profile.enterprise_code,
@@ -63,7 +64,7 @@ router.post('/', async (req: Request, res: Response): Promise<any> => {
         request_id: requestId,
         top_threat: mlData.top_threat,
         all_threats: mlData.all_threats,
-        report_md: mlData.report_md,
+        reportMd: mlData.report_md,
         enterprise: {
           enterprise_code: profile.enterprise_code,
           type: profile.type,

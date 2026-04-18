@@ -50,9 +50,11 @@ model PredictionLog {
   updatedAt         DateTime @updatedAt
   targetDate        DateTime?
   horizon           String? @default("7d")
+  reportMd          String?
   report_md         String?
   estimated_damage  Float?
 
+  @@map("prediction_logs")
   @@index([enterprise_code])
   @@index([createdAt])
 }
