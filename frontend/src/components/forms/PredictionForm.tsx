@@ -1,7 +1,7 @@
 // frontend/src/components/forms/PredictionForm.tsx
 
 import React, { useState } from 'react';
-import { PredictRequest } from '../../types/prediction';
+import type { PredictRequest } from '../../types/prediction';
 
 interface PredictionFormProps {
   onSubmit: (data: PredictRequest) => Promise<void> | void;
