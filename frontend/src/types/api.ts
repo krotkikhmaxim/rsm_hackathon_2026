@@ -109,3 +109,23 @@ export const {
   useGetDemoScenariosQuery,
   useRunDemoScenarioMutation,
 } = api;
+
+// types/api.ts
+
+export interface ApiError {
+  status: number;
+  message: string;
+  details?: string;
+}
+
+export interface PaginationParams {
+  page?: number;
+  limit?: number;
+}
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+}

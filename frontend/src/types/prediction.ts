@@ -1,10 +1,10 @@
-// frontend/src/types/prediction.ts
+// types/prediction.ts
 
 export interface PredictRequest {
   enterprise_type: string;
   region: string;
   host_count: number;
-  // В будущих этапах добавятся timestamp, etc.
+  // дополнительные поля могут быть добавлены позже
 }
 
 export interface IncidentPrediction {
@@ -72,6 +72,8 @@ export interface RecommendationItem {
   priority: number;
   priority_label: string;
   related_threat: string | null;
+  target_object?: string;
+  vuln_level?: 'low' | 'medium' | 'high' | 'critical';
 }
 
 export interface BusinessImpact {

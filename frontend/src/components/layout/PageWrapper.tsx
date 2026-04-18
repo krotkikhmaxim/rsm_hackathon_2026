@@ -1,18 +1,20 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import { Header } from './Header';
-import { Sidebar } from './Sidebar';
+// components/layout/PageWrapper.tsx
+import type { ReactNode } from 'react';   // ← import type
 
-export const PageWrapper: React.FC = () => {
+interface PageWrapperProps {
+  title: string;
+  children: ReactNode;
+  actions?: ReactNode;
+}
+
+export default function PageWrapper({ title, children, actions }: PageWrapperProps) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <Header />
-      <div style={{ display: 'flex', flex: 1 }}>
-        <Sidebar />
-        <main style={{ flex: 1, padding: '1.5rem', overflow: 'auto' }}>
-          <Outlet />
-        </main>
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-bold text-gray-100">{title}</h2>
+        {actions && <div className="flex gap-2">{actions}</div>}
       </div>
+      <div>{children}</div>
     </div>
   );
-};
+}

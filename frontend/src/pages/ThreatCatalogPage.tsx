@@ -1,17 +1,11 @@
-export const ThreatCatalogPage = () => {
+// pages/ThreatCatalogPage.tsx
+import PageWrapper from '../components/layout/PageWrapper';
+import EmptyState from '../components/common/EmptyState';
+
+export default function ThreatCatalogPage() {
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Threat Catalog</h1>
-
-      <p>
-        Здесь будет список всех угроз.
-      </p>
-
-      <ul>
-        <li>Угроза 1</li>
-        <li>Угроза 2</li>
-        <li>Угроза 3</li>
-      </ul>
-    </div>
+    <PageWrapper title="Каталог угроз ФСТЭК">
+      <EmptyState title="В разработке" message="Каталог угроз с поиском появится в ближайшее время" icon="⚠️" />
+    </PageWrapper>
   );
-};
+}
