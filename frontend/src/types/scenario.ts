@@ -1,3 +1,5 @@
+// types/scenario.ts
+
 export interface DemoScenario {
   id: string;
   name: string;
