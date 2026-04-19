@@ -88,6 +88,8 @@ export default function PredictionPage() {
           <input
             type="date"
             value={date}
+            min="2025-07-19"
+            max="2025-12-30"
             onChange={e => setDate(e.target.value)}
             style={{ padding: '8px 12px', borderRadius: 6, border: '1px solid var(--color-border)', fontSize: 14 }}
           />
