@@ -1,0 +1,43 @@
+{
+  "feature_cols": [
+    "day_of_week",
+    "day_of_month",
+    "month",
+    "lag_inc_1d",
+    "inc_3d_sum",
+    "inc_7d_sum",
+    "inc_30d_sum",
+    "succ_7d_sum",
+    "succ_30d_sum",
+    "had_incident_prev_1d",
+    "had_incident_prev_3d",
+    "had_incident_prev_7d",
+    "days_since_last_incident",
+    "days_since_last_success",
+    "type_inc_7d_sum",
+    "type_inc_30d_sum",
+    "avg_inter_attack_interval",
+    "attack_rate_trend",
+    "streak_active_days",
+    "streak_quiet_days",
+    "success_ratio_7d"
+  ],
+  "cat_features": [
+    "Тип предприятия",
+    "Регион размещения предприятия",
+    "Размер инфраструктуры"
+  ],
+  "target_cols": [
+    "target_next_24h",
+    "target_next_7d",
+    "days_until_next_attack",
+    "attack_window_class"
+  ],
+  "attack_window_labels": {
+    "0": "next_1d",
+    "1": "next_3d",
+    "2": "next_7d",
+    "3": "next_14d",
+    "4": "no_attack_30d"
+  }
+}
