@@ -162,20 +162,6 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Enterprises */}
-      <div style={{ marginBottom: 28 }}>
-        <h2 style={{ fontSize: 16, fontWeight: 600, marginBottom: 12 }}>Предприятия</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-          {enterprises.map(e => (
-            <EnterpriseCard
-              key={e.enterprise_code}
-              enterprise={e}
-              onPredict={() => navigate(`/predict?enterprise=${e.enterprise_code}`)}
-            />
-          ))}
-        </div>
-      </div>
-
       {/* Threats grid */}
       <div style={{ marginBottom: 28 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
