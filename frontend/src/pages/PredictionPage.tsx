@@ -13,7 +13,7 @@ export default function PredictionPage() {
   const [searchParams] = useSearchParams();
   const [enterprises, setEnterprises] = useState<EnterpriseItem[]>([]);
   const [enterpriseCode, setEnterpriseCode] = useState('');
-  const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState('2025-11-11');
   const [horizon, setHorizon] = useState<'24h' | '7d'>('7d');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
