@@ -63,13 +63,11 @@ async def internal_predict(request: InternalPredictRequest):
     if _artifacts is None:
         raise HTTPException(status_code=503, detail="Models not loaded yet")
 
-    if request.horizon not in ("24h", "7d"):
-        raise HTTPException(status_code=400, detail=f"Invalid horizon: {request.horizon}. Use '24h' or '7d'.")
-
     try:
         result = predict_for_date(
             target_date=request.date,
             horizon=request.horizon,
+            enterprise_type=request.enterprise_type,          
             artifacts=_artifacts,
         )
     except Exception as e:

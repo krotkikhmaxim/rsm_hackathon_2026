@@ -1,25 +1,9 @@
 {
   "featurecols": [
-    "Тип предприятия",
-    "Регион размещения предприятия",
-    "Количество хостов",
-    "hosts_log",
-    "Размер инфраструктуры",
     "day_of_week",
     "day_of_month",
     "month",
-    "quarter",
-    "year",
-    "is_weekend",
-    "dow_sin",
-    "dow_cos",
-    "month_sin",
-    "month_cos",
     "lag_inc_1d",
-    "lag_inc_2d",
-    "lag_inc_3d",
-    "lag_success_1d",
-    "lag_success_2d",
     "inc_3d_sum",
     "inc_7d_sum",
     "inc_30d_sum",
@@ -30,18 +14,22 @@
     "had_incident_prev_7d",
     "days_since_last_incident",
     "days_since_last_success",
-    "region_inc_7d_sum",
-    "region_inc_30d_sum",
     "type_inc_7d_sum",
-    "type_inc_30d_sum"
+    "type_inc_30d_sum",
+    "avg_inter_attack_interval",
+    "attack_rate_trend",
+    "streak_active_days",
+    "streak_quiet_days",
+    "success_ratio_7d"
   ],
-  "catfeatures": [
-    "Тип предприятия",
-    "Регион размещения предприятия",
-    "Размер инфраструктуры"
-  ],
+  "catfeatures": [],
   "targets": {
     "24h": "target_next_24h",
     "7d": "target_next_7d"
-  }
+  },
+  "horizons": [
+    "24h",
+    "7d"
+  ],
+  "version": "1.0.0"
 }

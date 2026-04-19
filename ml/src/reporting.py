@@ -17,6 +17,7 @@ def generate_markdown_report(prediction_result):
         f"- **Дата прогноза:** {date_str}",
         f"- **Горизонт:** {horizon_text}",
         "",
+        f"- **Кластер инфраструктуры:** {prediction_result['infrastructure_cluster']}",
         "### Главная угроза",
         f"- **Тип угрозы:** {top_threat['threatname']}",
         f"- **Вероятность:** {top_threat['probability']:.1%}",
