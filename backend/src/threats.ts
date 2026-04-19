@@ -4,7 +4,6 @@ import { PrismaClient } from '@prisma/client';
 const router = Router();
 const prisma = new PrismaClient();
 
-// GET /api/v1/threats — список угроз с пагинацией и поиском
 router.get('/', async (req: Request, res: Response): Promise<any> => {
   try {
     const page = Math.max(1, Number(req.query.page) || 1);
@@ -50,7 +49,6 @@ router.get('/', async (req: Request, res: Response): Promise<any> => {
   }
 });
 
-// GET /api/v1/threats/:code — детали угрозы
 router.get('/:code', async (req: Request, res: Response): Promise<any> => {
   try {
     const threat = await prisma.threat.findUnique({

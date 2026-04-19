@@ -4,7 +4,6 @@ import { PrismaClient } from '@prisma/client';
 const router = Router();
 const prisma = new PrismaClient();
 
-// GET /api/v1/recommendations — все рекомендации (фильтрация по threatId)
 router.get('/', async (req: Request, res: Response): Promise<any> => {
   try {
     const threatId = req.query.threatId ? Number(req.query.threatId) : undefined;

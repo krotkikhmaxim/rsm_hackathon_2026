@@ -8,8 +8,8 @@ datasource db {
 }
 
 model EnterpriseProfile {
-  id              Int      @id @default(autoincrement())
-  enterprise_code String   @unique
+  id              Int             @id @default(autoincrement())
+  enterprise_code String          @unique
   type            String
   host_count      Int
   region          String
@@ -19,14 +19,14 @@ model EnterpriseProfile {
 }
 
 model Threat {
-  id           Int      @id @default(autoincrement())
-  code         String   @unique
-  name         String
-  description  String?
-  object       String?
-  source       String?
-  cia_flags    String?
-  cluster      String?
+  id              Int              @id @default(autoincrement())
+  code            String           @unique
+  name            String
+  description     String?
+  object          String?
+  source          String?
+  cia_flags       String?
+  cluster         String?
   recommendations Recommendation[]
   predictions     PredictionLog[]
 
@@ -34,29 +34,29 @@ model Threat {
 }
 
 model PredictionLog {
-  id                String   @id @default(uuid())
-  request_id        String   @unique
+  id                String            @id @default(uuid())
+  request_id        String            @unique
   enterprise_code   String
   enterprise        EnterpriseProfile @relation(fields: [enterprise_code], references: [enterprise_code], onDelete: Cascade)
   probability       Float
   predicted_threat  String
-  threat_details    Threat?           @relation(fields: [predicted_threat], references: [code])
+  threat_details    Threat            @relation(fields: [predicted_threat], references: [code], onDelete: Restrict, onUpdate: Cascade)
   predicted_cluster String?
   predicted_object  String?
   season            String?
   day_of_week       Int?
   hour              Int?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
   targetDate        DateTime?
-  horizon           String? @default("7d")
-  reportMd          String?
+  horizon           String?           @default("7d")
   report_md         String?
   estimated_damage  Float?
 
-  @@map("prediction_logs")
+  @@map("PredictionLog")
   @@index([enterprise_code])
   @@index([createdAt])
+  @@index([predicted_threat])
 }
 
 model Recommendation {

@@ -4,7 +4,6 @@ import { PrismaClient } from '@prisma/client';
 const router = Router();
 const prisma = new PrismaClient();
 
-// GET /api/v1/analytics — KPI и статистика
 router.get('/', async (_req: Request, res: Response): Promise<any> => {
   try {
     const [totalPredictions, totalEnterprises, avgResult, topThreats, byHorizon, recentPredictions] =
@@ -26,17 +25,24 @@ router.get('/', async (_req: Request, res: Response): Promise<any> => {
         prisma.predictionLog.findMany({
           orderBy: { createdAt: 'desc' },
           take: 10,
-          select: {
-            request_id: true,
-            enterprise_code: true,
-            predicted_threat: true,
-            probability: true,
-            horizon: true,
-            targetDate: true,
-            createdAt: true,
+          include: {
+            threat_details: {
+              select: {
+                code: true,
+                name: true,
+              },
+            },
           },
         }),
       ]);
+
+    const threatCodes = topThreats.map((t) => t.predicted_threat);
+    const threats = await prisma.threat.findMany({
+      where: { code: { in: threatCodes } },
+      select: { code: true, name: true },
+    });
+
+    const threatNameMap = new Map(threats.map((t) => [t.code, t.name]));
 
     return res.json({
       status: 'success',
@@ -45,7 +51,8 @@ router.get('/', async (_req: Request, res: Response): Promise<any> => {
         avg_probability: avgResult._avg.probability || 0,
         total_enterprises: totalEnterprises,
         top_threats: topThreats.map((t) => ({
-          threat_name: t.predicted_threat,
+          threat_code: t.predicted_threat,
+          threat_name: threatNameMap.get(t.predicted_threat) || t.predicted_threat,
           count: t._count.predicted_threat,
           avg_probability: t._avg.probability || 0,
         })),
@@ -54,8 +61,13 @@ router.get('/', async (_req: Request, res: Response): Promise<any> => {
           count: h._count.horizon,
         })),
         recent_predictions: recentPredictions.map((p) => ({
-          ...p,
+          request_id: p.request_id,
+          enterprise_code: p.enterprise_code,
+          predicted_threat: p.threat_details?.name || p.predicted_threat,
+          probability: p.probability,
+          horizon: p.horizon,
           prediction_date: p.targetDate?.toISOString() || null,
+          createdAt: p.createdAt,
         })),
       },
     });

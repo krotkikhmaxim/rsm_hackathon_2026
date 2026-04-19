@@ -4,7 +4,6 @@ import { PrismaClient } from '@prisma/client';
 const router = Router();
 const prisma = new PrismaClient();
 
-// GET /api/v1/enterprises — список предприятий
 router.get('/', async (_req: Request, res: Response): Promise<any> => {
   try {
     const enterprises = await prisma.enterpriseProfile.findMany({
@@ -21,7 +20,6 @@ router.get('/', async (_req: Request, res: Response): Promise<any> => {
   }
 });
 
-// GET /api/v1/enterprises/:code — детали предприятия + история прогнозов
 router.get('/:code', async (req: Request, res: Response): Promise<any> => {
   try {
     const enterprise = await prisma.enterpriseProfile.findUnique({
@@ -30,12 +28,21 @@ router.get('/:code', async (req: Request, res: Response): Promise<any> => {
         predictions: {
           orderBy: { createdAt: 'desc' },
           take: 20,
+          include: {
+            threat_details: {
+              select: {
+                code: true,
+                name: true,
+                cluster: true,
+              },
+            },
+          },
         },
       },
     });
 
     if (!enterprise) {
-      return res.status(404).json({ error: `Предприятие не найдено` });
+      return res.status(404).json({ error: 'Предприятие не найдено' });
     }
 
     return res.json({ status: 'success', data: enterprise });

@@ -19,9 +19,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Health check с проверкой ML-сервиса
 app.get(`${API_PREFIX}/health`, async (_req: Request, res: Response) => {
   let mlStatus = 'unknown';
+
   try {
     const mlRes = await axios.get(`${ML_URL}/health`, { timeout: 5000 });
     mlStatus = mlRes.data?.status || 'ok';
@@ -39,14 +39,12 @@ app.get(`${API_PREFIX}/health`, async (_req: Request, res: Response) => {
   });
 });
 
-// Роутеры
 app.use(`${API_PREFIX}/predict`, predictRouter);
 app.use(`${API_PREFIX}/analytics`, analyticsRouter);
 app.use(`${API_PREFIX}/threats`, threatsRouter);
 app.use(`${API_PREFIX}/enterprises`, enterprisesRouter);
 app.use(`${API_PREFIX}/recommendations`, recommendationsRouter);
 
-// 404
 app.use((_req: Request, res: Response) => {
   res.status(404).json({
     status: 'error',
@@ -54,13 +52,12 @@ app.use((_req: Request, res: Response) => {
   });
 });
 
-// Глобальный обработчик ошибок
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Unhandled error:', err);
   res.status(500).json({
     status: 'error',
     message: 'Internal server error',
-    error: process.env.NODE_ENV !== 'production' ? err.message : undefined
+    error: process.env.NODE_ENV !== 'production' ? err.message : undefined,
   });
 });
 
